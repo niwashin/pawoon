@@ -30,8 +30,10 @@ class UserController extends Controller
         $user = new \App\User;
         $user->nama = $request->nama;
         $user->alamat = $request->alamat;
-        $user->uuid = str_random(60);
+        $user->uuid = str_random(10);
 
-        return $user->save();
+        $user->save();
+
+        return $user->uuid;
     }
 }

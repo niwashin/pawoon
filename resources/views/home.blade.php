@@ -19,19 +19,19 @@
 			            <table class="table">
 			            	<tr>
 			            		<td>ID</td>
-			            		<td><input type="id" class="form-control" disabled="disabled"></td>
+			            		<td><input type="id" id="id" class="form-control" disabled="disabled"></td>
 			            	</tr>
 			            	<tr>
 			            		<td>Nama</td>
-			            		<td><input type="nama" class="form-control"></td>
+			            		<td><input type="nama" id="nama" class="form-control"></td>
 			            	</tr>
 			            	<tr>
 			            		<td>Alamat</td>
-			            		<td><input type="nama" class="form-control"></td>
+			            		<td><input type="nama" id="alamat" class="form-control"></td>
 			            	</tr>
 			            </table>
 
-			            <button type="button" class="btn btn-default">SUBMIT</button>
+			            <button type="button" id="send" class="btn btn-default">SUBMIT</button>
 			        </div>
 				</div>
 
@@ -64,6 +64,17 @@
 			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 			crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  		
+  		<script>
+  			$("#send").click(function()
+  			{
+  				var nama = $("#nama").val();
+			    var alamat = $("#alamat").val();
+
+			    $.post("api/user/new", {nama: nama, alamat: alamat}, function(result)
+			    {
+			        $("#id").val(result);
+			    });
+			});
+  		</script>
 	</body>
 </html>
